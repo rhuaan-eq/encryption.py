@@ -4,6 +4,8 @@ from logo import logo
 
 def caesar(chosen_direction,text_typed,shift_amount):
     final_text = ''
+    if shift_amount > 26:
+        shift_amount %= 26
     for letter in text_typed:
         position = alphabet.index(letter)
         forward_position = position+shift_amount
@@ -23,11 +25,11 @@ def caesar(chosen_direction,text_typed,shift_amount):
 
 loop = True
 while loop == True:
-
+    
     alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     print(logo)
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-    while direction != 'encode' and 'decode':
+    while direction != 'encode' and direction != 'decode':
         direction = input("You write wrong\nType 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift NUMBER:\n"))
